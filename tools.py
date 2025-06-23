@@ -13,8 +13,8 @@ from typing import Any, Coroutine
 import requests
 
 
-os.environ['SEARCHAPI_API_KEY'] = settings.SEARCHAPI_API_KEY
-os.environ["E2B_API_KEY"] =  settings.E2B_API_KEY # upto 100$ free code execution 
+#os.environ['SEARCHAPI_API_KEY'] = settings.SEARCHAPI_API_KEY
+#os.environ["E2B_API_KEY"] =  settings.E2B_API_KEY # upto 100$ free code execution 
 
 search = SearchApiAPIWrapper()
 bearly_tool = BearlyInterpreterTool(api_key= settings.BEARLY_API_KEY) # code execution upto 100 requests 
