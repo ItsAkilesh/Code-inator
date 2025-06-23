@@ -13,7 +13,7 @@ import os
 from typing import Any, Coroutine
 import requests
 
-st.secrets['SEARCHAPI_API_KEY'] = settings.SEARCHAPI_API_KEY
+#st.secrets['SEARCHAPI_API_KEY'] = settings.SEARCHAPI_API_KEY
 #os.environ["E2B_API_KEY"] =  settings.E2B_API_KEY # upto 100$ free code execution 
 
 search = SearchApiAPIWrapper()
