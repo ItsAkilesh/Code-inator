@@ -17,15 +17,10 @@ from agents import llm
 from datamodel import AgentCoder
 from nodes import programmer, debugger, tester, executer, decide_to_end, explorer, srengineer, planner
 from langchain_experimental.agents.agent_toolkits.pandas.base import create_pandas_dataframe_agent
-import settings
 
 from utils import get_dataframe_metadata
 
 load_dotenv(".env.var")
-
-for key, value in st.secrets.items():
-    if hasattr(settings, key):
-        setattr(settings, key, value)
 
 workflow = StateGraph(AgentCoder)
 

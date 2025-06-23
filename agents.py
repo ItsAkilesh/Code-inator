@@ -6,7 +6,6 @@ from langchain.chains.openai_functions import create_structured_output_runnable
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.agents.output_parsers import OpenAIFunctionsAgentOutputParser
 from langchain.agents.format_scratchpad import format_to_openai_function_messages
-import settings
 from tools import SearchWolframAlpha, web_search_tool
 from langgraph.prebuilt import ToolExecutor
 from langchain.tools.render import format_tool_to_openai_function
@@ -19,8 +18,8 @@ from langchain.globals import set_llm_cache
 set_llm_cache(InMemoryCache())
 
 llm = ChatOpenAI(
-    model_name=settings.OPENAI_MODEL,
-    api_key=settings.OPENAI_API_KEY,
+    model_name=st.secrets['OPENAI_MODEL'],
+    api_key=st.secrets['OPENAI_API_KEY'],
     temperature=0.2
 )
 
