@@ -22,6 +22,17 @@ from utils import get_dataframe_metadata
 
 load_dotenv(".env.var")
 
+st.secrets['OPENAI_API_KEY'] = settings.OPENAI_API_KEY
+st.secrets['OPENAI_MODEL'] = settings.OPENAI_MODEL
+st.secrets['WOLFRAM_LLM_API_KEY'] = settings.WOLFRAM_LLM_API_KEY
+st.secrets['SEARCHAPI_API_KEY'] = settings.SEARCHAPI_API_KEY
+st.secrets['E2B_API_KEY'] = settings.E2B_API_KEY
+st.secrets['BEARLY_API_KEY'] = settings.BEARLY_API_KEY
+st.secrets['LANGSMITH_API_KEY'] = settings.LANGSMITH_API_KEY
+st.secrets['LANGCHAIN_TRACING_V2'] = settings.LANGCHAIN_TRACING_V2
+st.secrets['LANGCHAIN_ENDPOINT'] = settings.LANGCHAIN_ENDPOINT
+st.secrets['LANGCHAIN_PROJECT'] = settings.LANGCHAIN_PROJECT
+
 workflow = StateGraph(AgentCoder)
 
 # Build graph

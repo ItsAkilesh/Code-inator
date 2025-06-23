@@ -5,6 +5,7 @@ from langchain.tools import BaseTool
 from langchain_experimental.utilities import PythonREPL
 from langchain.agents import AgentType, Tool, initialize_agent
 #from langchain_experimental.utilities import PythonREPL
+import streamlit as st
 
 import settings
 import os 
@@ -12,8 +13,7 @@ import os
 from typing import Any, Coroutine
 import requests
 
-
-#os.environ['SEARCHAPI_API_KEY'] = settings.SEARCHAPI_API_KEY
+st.secrets['SEARCHAPI_API_KEY'] = settings.SEARCHAPI_API_KEY
 #os.environ["E2B_API_KEY"] =  settings.E2B_API_KEY # upto 100$ free code execution 
 
 search = SearchApiAPIWrapper()
