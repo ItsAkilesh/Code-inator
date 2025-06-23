@@ -1,10 +1,10 @@
 
 from langchain_community.utilities import SearchApiAPIWrapper
-from langchain_community.tools import BearlyInterpreterTool, E2BDataAnalysisTool
+from langchain_community.tools import BearlyInterpreterTool
 from langchain.tools import BaseTool
 from langchain_experimental.utilities import PythonREPL
 from langchain.agents import AgentType, Tool, initialize_agent
-from langchain_experimental.utilities import PythonREPL
+#from langchain_experimental.utilities import PythonREPL
 
 import settings
 import os 
@@ -22,18 +22,18 @@ python_repl = PythonREPL()
 
 
 
-e2b_data_analysis_tool = E2BDataAnalysisTool(
-    api_key=settings.E2B_API_KEY,
-    on_stdout=lambda stdout: print("stdout:", stdout),
-    on_stderr=lambda stderr: print("stderr:", stderr),
+#e2b_data_analysis_tool = E2BDataAnalysisTool(
+#     api_key=settings.E2B_API_KEY,
+#     on_stdout=lambda stdout: print("stdout:", stdout),
+#     on_stderr=lambda stderr: print("stderr:", stderr),
     #description="Evaluate the dataset using `plt.show()`."
-)
+#)
 
-e2b_data_analysis_tool = Tool(
-    name="python_repl",
-    description="A Python shell. Use this to execute python commands. Input should be a valid python command. If you want to see the output of a value, you should print it out with `print(...)`.",
-    func=python_repl.run,
-)
+# e2b_data_analysis_tool = Tool(
+#     name="python_repl",
+#     description="A Python shell. Use this to execute python commands. Input should be a valid python command. If you want to see the output of a value, you should print it out with `print(...)`.",
+#     func=python_repl.run,
+# )
 
 
 web_search_tool =  Tool(
@@ -43,31 +43,31 @@ web_search_tool =  Tool(
     )
 
 
-class SearchDocuments(BaseTool):
-    name ='SearchDocuments'
-    description = 'Used to search the database of documentations for scientific libraries if there are docs relevant to the given query'
+# class SearchDocuments(BaseTool):
+#     name ='SearchDocuments'
+#     description = 'Used to search the database of documentations for scientific libraries if there are docs relevant to the given query'
 
-    def _run(self, query: str) -> str:
-        """
-            Parameters:
-            - query (str): The search string to query the database. This should be a simple
-                        text string that describes what context is needed.
-            Returns:
-            - str: A text string encoded version of list of dictionaries, containing the context fetched from the database. 
-        """
+#     def _run(self, query: str) -> str:
+#         """
+#             Parameters:
+#             - query (str): The search string to query the database. This should be a simple
+#                         text string that describes what context is needed.
+#             Returns:
+#             - str: A text string encoded version of list of dictionaries, containing the context fetched from the database. 
+#         """
         
-        encoded_query = requests.utils.quote(query)
-        url = f"https://flask-production-751b.up.railway.app/getTopContexts?course_name=workflow_generator&search_query={encoded_query}&token_limit=3000"
+#         encoded_query = requests.utils.quote(query)
+#         url = f"https://flask-production-751b.up.railway.app/getTopContexts?course_name=workflow_generator&search_query={encoded_query}&token_limit=3000"
 
-        response = requests.request("GET", url)
+#         response = requests.request("GET", url)
 
-        data = response.json()
-        formatter = lambda  l: '---\n' + '---\n'.join( 
-            f'''{str(i + 1)}: {d['readable_filename']}, page: {d.get('pagenumber', '')}\n {d['text']}\n''' 
-            for i, d in enumerate(l)
-        )
+#         data = response.json()
+#         formatter = lambda  l: '---\n' + '---\n'.join( 
+#             f'''{str(i + 1)}: {d['readable_filename']}, page: {d.get('pagenumber', '')}\n {d['text']}\n''' 
+#             for i, d in enumerate(l)
+#         )
 
-        return formatter(data)
+#         return formatter(data)
     
 
     

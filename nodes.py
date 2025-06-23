@@ -2,7 +2,7 @@ from datamodel import AgentCoder
 
 
 import json 
-from tools import e2b_data_analysis_tool
+#from tools import e2b_data_analysis_tool
 from datamodel import Code
 from agents import coder, qa_tester, refiner, researcher, pm, architect
 
